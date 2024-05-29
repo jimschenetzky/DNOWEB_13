@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Jose Ims clase 13</title>
+        <link rel="icon" type="image/png" href="https://lh6.googleusercontent.com/7bvyvJFz3-Vk852R8ou3eSoQ8OeGtIQYDcU6mycCuEAyY7X-JtfQRiwTaBtY5WTwDgev0h3oc2Js_kC4cQfK2nI=w16383" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+        <link rel="icon" type="image/x-icon" href="https://github.com/jimschenetzky/DNOWEB_13/blob/main/favicon.png?raw=true" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css"
+            integrity="sha512-V0+DPzYyLzIiMiWCg3nNdY+NyIiK9bED/T1xNBj08CaIUyK3sXRpB26OUCIzujMevxY9TRJFHQIxTwgzb0jVLg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <style>
+            /*para cambiar tipografías*/
+            :root {
+                --bs-font-sans-serif: "Raleway", sans-serif;
+                --bs-light-rgb: 211, 236, 235;
+            }
+            .raleway-<uniquifier > {
+                font-family: "Raleway", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: <weight>;
+                font-style: normal;
+                font-variarion-settings: "width" 100;
+            }
+
+            /*para cambiar colores gráficos*/
+            .ct-series-a .ct-bar,
+            .ct-series-a .ct-line,
+            .ct-series-a .ct-point,
+            .ct-series-a .ct-slice-donut {
+                stroke: rgb(158, 1, 66);
+            }
+            .ct-series-a .ct-area,
+            .ct-series-a .ct-slice-donut-solid,
+            .ct-series-a .ct-slice-pie {
+                fill: rgb(158, 1, 66);
+            }
+            .ct-series-b .ct-bar,
+            .ct-series-b .ct-line,
+            .ct-series-b .ct-point,
+            .ct-series-b .ct-slice-donut {
+                stroke: rgb(219, 73, 74);
+            }
+            .ct-series-b .ct-area,
+            .ct-series-b .ct-slice-donut-solid,
+            .ct-series-b .ct-slice-pie {
+                fill: rgb(219, 73, 74);
+            }
+            .ct-series-c .ct-bar,
+            .ct-series-c .ct-line,
+            .ct-series-c .ct-point,
+            .ct-series-c .ct-slice-donut {
+                stroke: rgb(248, 142, 83);
+            }
+            .ct-series-c .ct-area,
+            .ct-series-c .ct-slice-donut-solid,
+            .ct-series-c .ct-slice-pie {
+                fill: rgb(248, 142, 83);
+            }
+            .ct-series-d .ct-bar,
+            .ct-series-d .ct-line,
+            .ct-series-d .ct-point,
+            .ct-series-d .ct-slice-donut {
+                stroke: rgb(254, 210, 129);
+            }
+            .ct-series-d .ct-area,
+            .ct-series-d .ct-slice-donut-solid,
+            .ct-series-d .ct-slice-pie {
+                fill: rgb(254, 210, 129);
+            }
+
+            .ct-series-e .ct-bar,
+            .ct-series-e .ct-line,
+            .ct-series-e .ct-point,
+            .ct-series-e .ct-slice-donut {
+                stroke: rgb(251, 248, 176);
+            }
+            .ct-series-e .ct-area,
+            .ct-series-e .ct-slice-donut-solid,
+            .ct-series-e .ct-slice-pie {
+                fill: rgb(251, 248, 176);
+            }
+            .ct-series-f .ct-bar,
+            .ct-series-f .ct-line,
+            .ct-series-f .ct-point,
+            .ct-series-f .ct-slice-donut {
+                stroke: rgb(213, 238, 159);
+            }
+            .ct-series-f .ct-area,
+            .ct-series-f .ct-slice-donut-solid,
+            .ct-series-f .ct-slice-pie {
+                fill: rgb(213, 238, 159);
+            }
+            .ct-series-g .ct-bar,
+            .ct-series-g .ct-line,
+            .ct-series-g .ct-point,
+            .ct-series-g .ct-slice-donut {
+                stroke: rgb(137, 207, 165);
+            }
+            .ct-series-g .ct-area,
+            .ct-series-g .ct-slice-donut-solid,
+            .ct-series-g .ct-slice-pie {
+                fill: rgb(137, 207, 165);
+            }
+            .ct-series-h .ct-bar,
+            .ct-series-h .ct-line,
+            .ct-series-h .ct-point,
+            .ct-series-h .ct-slice-donut {
+                stroke: rgb(70, 150, 179);
+            }
+            .ct-series-h .ct-area,
+            .ct-series-h .ct-slice-donut-solid,
+            .ct-series-h .ct-slice-pie {
+                fill: rgb(70, 150, 179);
+            }
+            .ct-series-i .ct-bar,
+            .ct-series-i .ct-line,
+            .ct-series-i .ct-point,
+            .ct-series-i .ct-slice-donut {
+                stroke: rgb(94, 79, 162);
+            }
+            .ct-series-i .ct-area,
+            .ct-series-i .ct-slice-donut-solid,
+            .ct-series-i .ct-slice-pie {
+                fill: rgb(94, 79, 162);
+            }
+
+            figure img {
+                filter: grayscale(1);
+                transition: all ease 1s;
+            }
+            figure img:hover {
+                filter: grayscale(0);
+                transition: all ease 1s;
+            }
+        </style>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"
+            integrity="sha512-9rxMbTkN9JcgG5euudGbdIbhFZ7KGyAuVomdQDI9qXfPply9BJh0iqA7E/moLCatH2JD4xBGHwV6ezBkCpnjRQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load("current", {
+                packages: ["geochart"],
+            });
+            google.charts.setOnLoadCallback(drawRegionsMap);
+
+            function drawRegionsMap() {
+                var data = google.visualization.arrayToDataTable([
+                    ["Country", "Popularity"],
+                    ["United States", 6548],
+                    ["China", 4522],
+                    ["Japan", 1985],
+                    ["United Kingdom", 1369],
+                    ["France", 1239],
+                    ["India", 1197],
+                    ["South Korea", 1152],
+                    ["Germany", 814],
+                    ["Australia", 758],
+                    ["Canada", 655],
+                    ["X", 0],
+                ]);
+
+                var options = {};
+
+                var chart = new google.visualization.GeoChart(document.getElementById("regions_div"));
+
+                chart.draw(data, options);
+            }
+        </script>
+    </head>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+            <symbol id="bank" viewBox="0 0 16 16">
+                <path
+                    d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"
+                />
+            </symbol>
+            <symbol id="cash" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0" />
+                <path
+                    d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"
+                />
+                <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z" />
+                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567" />
+            </symbol>
+            <symbol id="data" viewBox="0 0 16 16">
+                <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z" />
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
+            </symbol>
+            <symbol id="movie" viewBox="0 0 16 16">
+                <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm4 0v6h8V1zm8 8H4v6h8zM1 1v2h2V1zm2 3H1v2h2zM1 7v2h2V7zm2 3H1v2h2zm-2 3v2h2v-2zM15 1h-2v2h2zm-2 3v2h2V4zm2 3h-2v2h2zm-2 3v2h2v-2zm2 3h-2v2h2z" />
+            </symbol>
+            <symbol id="ticket" viewBox="0 0 16 16">
+                <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z" />
+                <path
+                    d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"
+                />
+            </symbol>
+        </svg>
+        <header class="bg-light fixed-top">
+            <div class="container py-3">
+                <div class="row">
+                    <div class="col-10 mx-auto text-center">
+                        <p class="my-0 d-flex justify-content-between align-items-center">
+                            <span href="https://github.com/jimschenetzky/DNOWEB_13">Jose Ims</span> <span class="d-sm-none">|</span><span href="https://diseno.uc.cl/">Diseño UC</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <figure class="mt-5 mx-2">
+            <img id="foto" src="https://s.studiobinder.com/wp-content/uploads/2020/07/Highest-Grossing-Movies-of-All-Time-What-Makes-a-Blockbuster-Featured.jpg" class="pt-3 w-100" />
+        </figure>
+        <main class="mt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 pe-5">
+                        <h2>
+                            <svg width="30" height="30">
+                                <use href="#cash" />
+                            </svg>
+                            Highest grossing movies in history
+                        </h2>
+                        <object data="viz.svg" type="image/svg+xml" class="w-100">
+                            <img src="alt.png" />
+                        </object>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row ps-5">
+                            <div class="col-12 col-sm-6 col-lg-12 py-3">
+                                <h2 class="text-center fs-5">
+                                    <svg width="30" height="30">
+                                        <use href="#data" />
+                                    </svg>
+                                    ROI
+                                </h2>
+                                <div class="ct-chart1 ct-minor-second"></div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-12 py-3">
+                                <h2 class="text-center fs-5">
+                                    <svg width="30" height="30">
+                                        <use href="#bank" />
+                                    </svg>
+                                    BOX OFFICE
+                                </h2>
+                                <div class="ct-chart2 ct-minor-second"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                    <div class="col-12">
+                        <h2 class="text-center">
+                            <svg width="30" height="30">
+                                <use href="#movie" />
+                            </svg>
+                            COMPARACIÓN PROMEDIOS
+                        </h2>
+                        <div class="ct-chart3 ct-major-twelfth"></div>
+                    </div>
+                    <div class="col-12">
+                        <h2 class="text-center">
+                            <svg width="30" height="30">
+                                <use href="#ticket" />
+                            </svg>
+                            Países con mayor taquilla en 2022 en USD
+                        </h2>
+                        <div class="container py-1 col-12 ct-major-twelfth" id="regions_div" style="width: 900px; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-light">
+            <hr />
+            <div class="container py-1">
+                <div class="row">
+                    <div class="col-10 mx-auto text-center fw-lighter">
+                        <p class="my-0 d-flex justify-content-between align-items-center"><span>Clase 13</span><span class="d-sm-none">|</span><span>Jose Ims</span><span class="d-sm-none">|</span><span>29 Mayo 2024</span></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            new Chartist.Pie(
+                ".ct-chart1",
+                {
+                    labels: ["Acción", "Aventura", "Animación", "Biografía", "Crimen", "Drama", "Familia", "Horror", "Musical"],
+                    series: [13.681, 147.625, 81.77, 34.9, 42.8, 37.525, 75.5, 36.8, 66.2],
+                },
+                {
+                    donut: true,
+                    donutWidth: 60,
+                    donutSolid: true,
+                    startAngle: 270,
+                    showLabel: true,
+                }
+            );
+        </script>
+        <script>
+            new Chartist.Pie(
+                ".ct-chart2",
+                {
+                    labels: ["Acción", "Aventura", "Animación", "Biografía", "Crimen", "Drama", "Familia", "Horror", "Musical"],
+                    series: [1284.43, 754.125, 834.27, 286, 246, 879.75, 793, 441, 397],
+                },
+                {
+                    donut: true,
+                    donutWidth: 60,
+                    donutSolid: true,
+                    startAngle: 270,
+                    showLabel: true,
+                }
+            );
+        </script>
+        <script>
+            new Chartist.Bar(
+                ".ct-chart3",
+                {
+                    labels: ["Acción", "Aventura", "Animación", "Biografía", "Crimen", "Drama", "Familia", "Horror", "Musical"],
+                    series: [
+                        [13.681, 147.625, 81.77, 34.9, 42.8, 37.525, 75.5, 36.8, 66.2],
+                        [1284.43, 754.125, 834.27, 286, 246, 879.75, 793, 441, 397],
+                    ],
+                },
+                {
+                    axisX: {
+                        // On the x-axis start means top and end means bottom
+                        position: "start",
+                    },
+                    axisY: {
+                        // On the y-axis start means left and end means right
+                        position: "end",
+                    },
+                }
+            );
+        </script>
+        <script>
+            window.addEventListener("scroll", function () {
+                let num = (window.scrollY / window.innerHeight) * 6;
+                document.getElementById("foto").style.webkitFilter = "blur(" + num + "px)";
+            });
+        </script>
+    </body>
+</html>
